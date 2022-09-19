@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>HRMS</title>
+
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/custom.css" />
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/animate.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/style.css" />
+        
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/custom.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/plugins.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <section id="home-header">
+                <nav class="navbar navbar-fixed-top navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">              
+                            <a class="navbar-brand" id="hrms" href="/">HRMS</a>                   
+                        </div>
+            
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="/about" id="navbarEmpName">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+            
+            <section id="menu" class="light">
+                <div class="container">
+                    <div class="row" id="center">
+                        <div class="col-md-6">
+                            <div class="img-team">
+                                <img src="https://ainisha-employee.s3.amazonaws.com/profile/emp-id-E2_image_file_19_09_2022_16_19_50.CWY.jpg" alt="" class="img-circle" style="width: 200px; height: 200px">
+                                <h5 id="h2-black" style="text-align: center;">Chow Weng Yong</h5>
+                                <h5 id="h4-black" style="text-align: center;">CEO</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <br /><br /><br /><br />
+                                <h1>X Space</h1>
+                                <p>A Co Study Space, operating 24 Hours per 7 Days to offer students and entrepreneurs spaces to work on their productivity</p>
+
+                                <div class="row" id="center">
+                                    <div class="col-md-8">
+                                        <div>
+                                            <h3>Vision</h3>
+                                            <p>X Space’s vision is to be Malaysia’s most comfortable Co Study Space for the students in every state of the country. By reaching 90% of University College in Malaysia through marketing such as advertisement on social media and physical flyer distributions. </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div>
+                                            <h3>Mission</h3>
+                                            <p>X Space’s mission is to be students’ favorite space to chill for study and top priority when looking for space for activities. By offering trendy space from time to time with an affordable price for student’s market</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="center">
+                        {% for emp in empList %}                       
+                        <div class="col-md-10">
+                            <div class="img-team">
+                                <img src="{{ emp.1 }}" alt="" class="img-circle" style="width: 200px; height: 200px">
+                                <h5 id="h2-black" style="text-align: center;">{{ emp.0 }}</h5>
+                                <h5 id="h4-black" style="text-align: center;">{{ emp.2 }} of {{ emp.3 }}</h5>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+                        
+            <section id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a href="/about"></a>
+                            <p>&copy All Right Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </section>       
+        </div>
+    </body>
+</html>

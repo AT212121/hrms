@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>HRMS</title>
+    
+            <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/custom.css" />
+            <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/bootstrap.min.css"/>
+            <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/font-awesome.min.css"/>
+            <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/animate.css"/>
+            <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/style.css" />
+            
+            <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/custom.js"></script>
+            <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/jquery-1.11.2.min.js"></script>
+            <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/bootstrap.min.js"></script>
+            <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/plugins.js"></script>
+        </head>
+    <body>
+        <div class="container-fluid">
+            <section id="home-header">
+                <nav class="navbar navbar-fixed-top navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">              
+                            <a class="navbar-brand" id="hrms" href="/">HRMS</a>                   
+                        </div>
+            
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="/about" id="navbarEmpName">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+            
+            <section id="menu" class="light">
+                <div class="container">
+                    <div class="row" id="center">
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/empIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/employee.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Employee</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/workforceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/city.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Workforce</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/performanceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/user.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Performance</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/attendanceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/appointment.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Attendance</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/payrollIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/result.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Payroll</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="list" class="light">
+                <div class="container">
+                    <div class="row">                                  
+                        <div class="panel panel-default">
+                            <form action="/workforceStore" autocomplete="on" method="POST" name="WorkForceCreate" enctype="multipart/form-data">
+                                    <table class="table">
+                                        <thead>
+                                            <th>Assign New Workforce</th>
+                                        </thead>
+                                        <tr>
+                                            <td>Employee ID: </td>
+                                            <td>
+                                                <select name="empID" id="empID">
+                                                    {% for emp in empList %}                                
+                                                        <option value="{{ emp.0 }}">{{ emp.1 }}</option>
+                                                    {% endfor %}                                                
+                                                </select>
+                                            </td>
+                                        </tr>        
+                                        <tr>
+                                            <td>Branch: </td>
+                                            <td>
+                                                <select name="branch" id="branch">
+                                                    <option value="Kuala Lumpur" selected="selected">Kuala Lumpur</option>
+                                                    <option value="Penang">Penang</option>
+                                                    <option value="Johor">Johor</option>
+                                                    <option value="Remote">Remote</option>
+                                                </select>
+                                            </td>
+                                        </tr>                    
+                                        <tr>
+                                            <td>Task: </td>
+                                            <td>
+                                                <textarea type="text" name="task" rows="10" cols="50"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><input type="submit" value="Assign"/></td>
+                                        </tr>
+                                    </table>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a href="/about"></a>
+                            <p>&copy All Right Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </section>  
+        </div>
+    </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>HRMS</title>
+
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/custom.css" />
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/animate.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/style.css" />
+        
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/custom.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/plugins.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">            
+            <section id="home-header">
+                <nav class="navbar navbar-fixed-top navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">              
+                            <a class="navbar-brand" id="hrms" href="/">HRMS</a>                   
+                        </div>
+            
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="/about" id="navbarEmpName">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+            
+            <section id="menu" class="light">
+                <div class="container">
+                    <div class="row" id="center">
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/empIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/employee.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Employee</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/workforceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/city.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Workforce</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/performanceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/user.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Performance</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/attendanceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/appointment.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Attendance</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/payrollIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/result.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Payroll</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="list" class="light">
+                <div class="container">
+                    <div class="row">                            
+                        <div class="panel panel-default">
+                            <form action="/empUpdate" autocomplete="on" method="POST" name="EmployeeUpdate" enctype="multipart/form-data">
+                                <table class="table">
+                                    <thead>
+                                        <th>Update Employee</th>  
+                                    </thead>
+                                    {% for emp in empEdit %}                                
+                                    <tr>
+                                        <td>Employee ID: </td>
+                                        <td>
+                                            <input type="text" name="empID" value="{{ emp.0 }}" readonly/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Employee Name: </td>
+                                        <td>
+                                            <input type="text" name="empName" value="{{ emp.1 }}"  pattern="[A-z ]+"/>
+                                        </td>
+                                    </tr>                               
+                                    <tr>
+                                        <td>Contact: </td>
+                                        <td>
+                                            <input type="text" name="contact" placeholder="01xxxxxxxx" value="{{ emp.3 }}" pattern="01[0-9]{8-9}"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email: </td>
+                                        <td>
+                                            <input type="email" name="email" value="{{ emp.4 }}" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address: </td>
+                                        <td>
+                                            <input type="text" name="address" value="{{ emp.5 }}" />
+                                        </td>
+                                    </tr>     
+                                    <tr>
+                                        <td>Role: </td>
+                                        <td>
+                                            <select name="role" id="role">
+                                                <option value="Director" {% if emp.6 == 'Director' %} selected {% endif %}>Director</option>
+                                                <option value="Manager" {% if emp.6 == 'Manager' %} selected {% endif %}>Manager</option>
+                                                <option value="Employee" {% if emp.6 == 'Employee' %} selected {% endif %}>Employee</option>
+                                            </select>
+                                        </td>
+                                    </tr>  
+                                    <tr>
+                                        <td>Department: </td>
+                                        <td>
+                                            <select name="department" id="department">
+                                                <option value="Finance" {% if emp.7 == 'Finance' %} selected {% endif %}>Finance</option>
+                                                <option value="Marketing" {% if emp.7 == 'Marketing' %} selected {% endif %}>Marketing</option>
+                                                <option value="Operations" {% if emp.7 == 'Operations' %} selected {% endif %}>Operations</option>
+                                                <option value="Communications" {% if emp.7 == 'Communications' %} selected {% endif %}>Communications</option>
+                                            </select>
+                                        </td>
+                                    </tr>                                 
+                                    <tr>
+                                        <td>Profile: </td>
+                                        <td>
+                                            <img src="{{ emp.2 }}" width="200px" height="200px"/>
+                                            <input type="file" name="profile" id="profile"/>
+                                            <input type="hidden" name="s3_url" value="{{ emp.2 }}" />
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="2"><input type="submit" value="Update" /></td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section> 
+            
+            <section id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a href="/about"></a>
+                            <p>&copy All Right Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>HRMS</title>
+
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/custom.css" />
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/animate.css"/>
+        <link rel="stylesheet" href="https://ainisha-employee.s3.amazonaws.com/css/style.css" />
+        
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/custom.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/jquery-1.11.2.min.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://ainisha-employee.s3.amazonaws.com/js/plugins.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <section id="home-header">
+                <nav class="navbar navbar-fixed-top navbar-default">
+                    <div class="container">
+                        <div class="navbar-header">              
+                            <a class="navbar-brand" id="hrms" href="/">HRMS</a>                   
+                        </div>
+            
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <a href="/about" id="navbarEmpName">About</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </section>
+            
+            <section id="menu" class="light">
+                <div class="container">
+                    <div class="row" id="center">
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/empIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/employee.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Employee</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/workforceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/city.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Workforce</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/performanceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/user.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Performance</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/attendanceIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/appointment.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Attendance</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="img-team">
+                                <a href="/payrollIndex">
+                                    <img src="https://ainisha-employee.s3.amazonaws.com/images/result.jpg" alt="" class="img-circle">
+                                    <h5 id="h5-black">Payroll</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="list" class="light">
+                <div class="container">
+                    <div class="row">
+                        <a href="/empCreate" class="btn btn-default float-right">Create</a>
+                        <br /><br />                                                          
+                        <div class="panel panel-default">
+                            <table class="table">
+                                <thead>
+                                    <th>Employee ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Role</th>
+                                    <th>Department</th>
+                                    <th colspan="3"></th>
+                                </thead>
+                                {% for emp in empList %}                                
+                                    <tr>
+                                        <td>{{ emp.0 }}</td>
+                                        <td>{{ emp.1 }}</td>
+                                        <td>{{ emp.3 }}</td>
+                                        <td>{{ emp.4 }}</td>
+                                        <td>{{ emp.5 }}</td>
+                                        <td>{{ emp.6 }}</td>
+                                        <td>{{ emp.7 }}</td>
+                                        <td>
+                                            <form action="/performanceCreate" method="POST" name="PerformanceCreate" >
+                                                <input type="submit" class="btn btn-default" value="RATE" readonly/></td>
+                                                <input type="hidden" name="empID" value="{{ emp.0 }}" />
+                                                <input type="hidden" name="empName" value="{{ emp.1 }}" />
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/empEdit" method="POST" name="EmployeeEdit" >
+                                                <input type="submit" class="btn btn-default" value="EDIT" readonly/></td>
+                                                <input type="hidden" name="empID" value="{{ emp.0 }}" />
+                                                <input type="hidden" name="empName" value="{{ emp.1 }}" />
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form action="/empDelete" method="POST" name="EmployeeDelete" >
+                                                <input type="submit" class="btn btn-default" value="DELETE" readonly/></td>
+                                                <input type="hidden" name="empID" value="{{ emp.0 }}" />
+                                                <input type="hidden" name="empName" value="{{ emp.1 }}" />
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <a href="/about"></a>
+                            <p>&copy All Right Reserved</p>
+                        </div>
+                    </div>
+                </div>
+            </section>       
+        </div>
+    </body>
+</html>
